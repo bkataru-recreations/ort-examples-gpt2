@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-ort = { version = "2.0.0-rc.9", features = ["fetch-models"] }
+ort = "2.0.0-rc.9"
 rand = "0.9.0"
 tokenizers = { version = "0.21.0", default-features = false, features = ["onig"] }
 tracing-subscriber = { version = "0.3.19", default-features = false, features = [ "env-filter", "fmt" ] }
