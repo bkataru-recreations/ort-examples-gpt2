@@ -32,7 +32,7 @@ fn main() -> ort::Result<()> {
         .commit()?;
 
     let mut stdout: io::Stdout = io::stdout();
-    let mut rng = rand::thread_rng();
+    let mut rng = rand::rng();
 
     // load our model
     let session = Session::builder()?
@@ -66,7 +66,7 @@ fn main() -> ort::Result<()> {
         probabilities.sort_unstable_by(|a, b| b.1.partial_cmp(&a.1).unwrap_or(std::cmp::Ordering::Less));
 
         // sample using top-k sampling
-        let token = probabilities[rng.gen_range(0..=TOP_K)].0 as i64;
+        let token = probabilities[rng.random_range(0..=TOP_K)].0 as i64;
 
         // add our generated token to the input sequence
         tokens.push(token);
